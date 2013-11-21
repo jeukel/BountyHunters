@@ -21,6 +21,7 @@ const int ledPin0 = 5;
 const int ledPin1 = 6;
 const int ledPin2 = 7;
 const int ledPin3 = 8; //Sets pins for leds
+int money = 10; //money owns by arduino
 
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
@@ -136,37 +137,25 @@ void ledOutput(){
   
   if (money == 4){
     digitalWrite(LedPin0, LOW);
-    digitalWrite(LedPin1, LOW);
-    digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, LOW);
   }
   
   if (money == 3){
-    digitalWrite(LedPin0, LOW);
-    digitalWrite(LedPin1, LOW);
+    digitalWrite(LedPin0, HIGH);
+    digitalWrite(LedPin1, HIGH);
     digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, LOW);
   }
   
   if (money == 2){
     digitalWrite(LedPin0, LOW);
-    digitalWrite(LedPin1, LOW);
-    digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, LOW);
   }
   
   if (money == 1){
-    digitalWrite(LedPin0, LOW);
+    digitalWrite(LedPin0, HIGH);
     digitalWrite(LedPin1, LOW);
-    digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, LOW);
   }
   
   if (money == 0){
     digitalWrite(LedPin0, LOW);
-    digitalWrite(LedPin1, LOW);
-    digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, LOW);
   }  
   
 }
