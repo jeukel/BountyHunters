@@ -17,9 +17,6 @@
 // #include <SPI.h>
 // #include <Ethernet.h>
 
-//Button related var
-int val = 0;          // val will be used to store the state of the input pin
-int oldval = 0;
 
 //button
 const int BT = 9;
@@ -27,7 +24,12 @@ const int BT = 9;
 const int ledPin0 = 5;
 const int ledPin1 = 6;
 const int ledPin2 = 7;
-const int ledPin3 = 8; //Sets pins for leds
+const int ledPin3 = 4; //Sets pins for leds
+
+//Button related var
+int val = 0;          // val will be used to store the state of the input pin
+int oldval = 0;
+
 int money = 10; //money owns by arduino
 
 void setup() {
@@ -48,76 +50,60 @@ void loop(){
   oldval = val;
   val = digitalRead(BT); // read input value and store it
   
-  
-  if(money == 0){
-    money = 10;      
-  }
-  
   if((val == HIGH) && (oldval == LOW)) {
     money -= 1;
-    ledOutput();
-  } else if((val == LOW) && (oldval == HIGH)) {
-    money -= 1;
-    ledOutput();
-  }
+    Serial.print(money);
+    ledOutput();    
+  } 
   
 }
 
 void ledOutput(){
 
   if (money == 10){
-    digitalWrite(ledPin0, LOW);
-    digitalWrite(ledPin1, HIGH);
-    digitalWrite(ledPin2, LOW);
-    digitalWrite(ledPin3, HIGH);
-  }
-  
-  if (money == 9){
-    digitalWrite(ledPin0, HIGH);
-    digitalWrite(ledPin1, LOW);
-  }
-  
-  if (money == 8){
-    digitalWrite(ledPin0, LOW);
-  }
-  
-  if (money == 7){
-    digitalWrite(ledPin0, HIGH);
-    digitalWrite(ledPin1, HIGH);
-    digitalWrite(ledPin2, HIGH);
-    digitalWrite(ledPin3, LOW);
-  }
-  
-  if (money == 6){
-    digitalWrite(ledPin0, LOW);
-  }
-  
-  if (money == 5){
-    digitalWrite(ledPin0, HIGH);
-    digitalWrite(ledPin1, LOW);
-  }
-  
-  if (money == 4){
-    digitalWrite(ledPin0, LOW);
-  }
-  
-  if (money == 3){
-    digitalWrite(ledPin0, HIGH);
-    digitalWrite(ledPin1, HIGH);
-    digitalWrite(ledPin2, LOW);
-  }
-  
-  if (money == 2){
-    digitalWrite(ledPin0, LOW);
-  }
-  
-  if (money == 1){
-    digitalWrite(ledPin0, HIGH);
-    digitalWrite(ledPin1, LOW);
-  }
-  
-  if (money == 0){
-    digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, HIGH);
+      digitalWrite(ledPin2, LOW);
+      digitalWrite(ledPin3, HIGH);
+      
+  } else if (money == 9){
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, LOW);
+      
+  } else if (money == 8){
+      digitalWrite(ledPin0, LOW);
+      
+  } else if (money == 7){
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, HIGH);
+      digitalWrite(ledPin2, HIGH);
+      digitalWrite(ledPin3, LOW);
+      
+  } else if (money == 6){
+      digitalWrite(ledPin0, LOW);
+      
+  } else if (money == 5){
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, LOW);
+      
+  } else if (money == 4){
+      digitalWrite(ledPin0, LOW);
+      
+  } else if (money == 3){
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, HIGH);
+      digitalWrite(ledPin2, LOW);
+      
+  } else if (money == 2){
+      digitalWrite(ledPin0, LOW);
+      
+  } else if (money == 1){
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, LOW);
+      
+  } else if (money == 0){
+      digitalWrite(ledPin0, LOW);
+      money = 10;      
   }  
   
 }
