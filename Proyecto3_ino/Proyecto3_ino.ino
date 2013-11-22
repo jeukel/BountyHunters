@@ -34,7 +34,7 @@ int money = 11; //money owns by arduino
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // if you don't want to use DNS (and reduce your sketch size)
 // use the numeric IP instead of the name for the server:
-IPAddress server(192,168,0,100);  // numeric IP for server (no DNS)
+IPAddress server(192,168,0,102);  // numeric IP for server (no DNS)
 //char server[] = "www.google.com";    // name address for Google (using DNS)
 
 // Set the static IP address to use if the DHCP fails to assign
@@ -75,8 +75,6 @@ void setup() {
     Serial.println("connected");
     // Make a HTTP request:
     client.println("GET /search?q=arduino HTTP/1.1");
-    client.println("Host: www.google.com");
-    client.println("Connection: close");
     client.println();
   } 
   else {
@@ -102,7 +100,7 @@ void loop(){
 
     // do nothing forevermore:
     while(true);
-  }
+  } 
   
 }
 
