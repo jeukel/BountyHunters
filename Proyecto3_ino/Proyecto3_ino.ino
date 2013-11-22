@@ -17,22 +17,28 @@
 #include <SPI.h>
 #include <Ethernet.h>
 
+//button
+const int BT = 9;
+
 const int ledPin0 = 5;
 const int ledPin1 = 6;
 const int ledPin2 = 7;
 const int ledPin3 = 8; //Sets pins for leds
-int money = 10; //money owns by arduino
+
+int homeRegion = 666;
+
+int money = 11; //money owns by arduino
 
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // if you don't want to use DNS (and reduce your sketch size)
 // use the numeric IP instead of the name for the server:
-IPAddress server(192.168.0.100);  // numeric IP for server (no DNS)
+IPAddress server(192,168,0,100);  // numeric IP for server (no DNS)
 //char server[] = "www.google.com";    // name address for Google (using DNS)
 
 // Set the static IP address to use if the DHCP fails to assign
-IPAddress ip(192,168,0,177);
+IPAddress ip(192,168,0,144);
 
 // Initialize the Ethernet client library
 // with the IP address and port of the server 
@@ -40,7 +46,6 @@ IPAddress ip(192,168,0,177);
 EthernetClient client;
 
 void setup() {
- 
   
  pinMode(ledPin0, OUTPUT);
  pinMode(ledPin1, OUTPUT);
@@ -49,7 +54,7 @@ void setup() {
  
  
  // Open serial communications and wait for port to open:
-  Serial.begin(9600);
+  Serial.begin(115200);
    while (!Serial) {
     ; // wait for serial port to connect. Needed for Leonardo only
   }
@@ -104,58 +109,48 @@ void loop(){
 void ledOutput(){
 
   if (money == 10){
-    digitalWrite(LedPin0, LOW);
-    digitalWrite(LedPin1, HIGH);
-    digitalWrite(LedPin2, LOW);
-    digitalWrite(LedPin3, HIGH);
-  }
-  
-  if (money == 9){
-    digitalWrite(LedPin0, HIGH);
-    digitalWrite(LedPin1, LOW);
-  }
-  
-  if (money == 8){
-    digitalWrite(LedPin0, LOW);
-  }
-  
-  if (money == 7){
-    digitalWrite(LedPin0, HIGH);
-    digitalWrite(LedPin1, HIGH);
-    digitalWrite(LedPin2, HIGH);
-    digitalWrite(LedPin3, LOW);
-  }
-  
-  if (money == 6){
-    digitalWrite(LedPin0, LOW);
-  }
-  
-  if (money == 5){
-    digitalWrite(LedPin0, HIGH);
-    digitalWrite(LedPin1, LOW);
-  }
-  
-  if (money == 4){
-    digitalWrite(LedPin0, LOW);
-  }
-  
-  if (money == 3){
-    digitalWrite(LedPin0, HIGH);
-    digitalWrite(LedPin1, HIGH);
-    digitalWrite(LedPin2, LOW);
-  }
-  
-  if (money == 2){
-    digitalWrite(LedPin0, LOW);
-  }
-  
-  if (money == 1){
-    digitalWrite(LedPin0, HIGH);
-    digitalWrite(LedPin1, LOW);
-  }
-  
-  if (money == 0){
-    digitalWrite(LedPin0, LOW);
+      digitalWrite(ledPin0, HIGH);
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, HIGH);
+      digitalWrite(ledPin3, LOW);
+      
+  } else if (money == 9){
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, HIGH);
+      
+  } else if (money == 8){
+      digitalWrite(ledPin0, HIGH);
+      
+  } else if (money == 7){
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, LOW);
+      digitalWrite(ledPin3, HIGH);
+      
+  } else if (money == 6){
+      digitalWrite(ledPin0, HIGH);
+      
+  } else if (money == 5){
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, HIGH);
+      
+  } else if (money == 4){
+      digitalWrite(ledPin0, HIGH);
+      
+  } else if (money == 3){
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, HIGH);
+      
+  } else if (money == 2){
+      digitalWrite(ledPin0, HIGH);
+      
+  } else if (money == 1){
+      digitalWrite(ledPin0, LOW);
+      digitalWrite(ledPin1, HIGH);
+      
+  } else if (money == 0){
+      digitalWrite(ledPin0, HIGH);
+      money = 11;      
   }  
-  
 }
