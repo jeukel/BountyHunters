@@ -6,7 +6,7 @@ import java.io.*;
 public class Server {
 
 	ServerSocket server;	//Creates server
-	Socket sockets;		//Creates comunication tunnel
+	Socket sockets;		//Creates communication tunnel
 	int port = 61000;	//Selects a port
 	DataOutputStream output;	//Stream to use as output
 	BufferedReader input;	//Stream used as input
